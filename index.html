@@ -739,6 +739,16 @@
                 });
             });
         });
+                // Cambiar video por imagen en móviles
+        function checkScreenSize() {
+            const videoBg = document.querySelector('.video-bg');
+            if (window.innerWidth < 768) {
+                videoBg.style.display = 'none';
+                document.querySelector('header').style.backgroundImage = 'url("https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")';
+            } else {
+                videoBg.style.display = 'block';
+                document.querySelector('header').style.backgroundImage = 'none';
+            }
         }
 
         window.addEventListener('resize', checkScreenSize);
