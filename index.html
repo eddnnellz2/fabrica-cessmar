@@ -2,762 +2,312 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fábrica Cessmar - Muebles y Camas Premium en Mariara</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fábrica de Muebles CESSMAR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        /* Variables de color y tipografía */
-        :root {
-            --aguamarina: #7FFFD4;
-            --aguamarina-oscuro: #66CDAA;
-            --plateado: #C0C0C0;
-            --gris: #808080;
-            --gris-oscuro: #333;
-            --blanco: #FFF;
-            --negro: #222;
-            --sombra: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --fuente: 'Montserrat', sans-serif;
-        }
-
-        /* Reset y estilos base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: var(--fuente);
-            color: var(--gris-oscuro);
-            background-color: var(--blanco);
-            overflow-x: hidden;
-        }
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        section {
-            padding: 100px 0;
-        }
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            position: relative;
-            display: inline-block;
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 70%;
-            height: 4px;
-            background: var(--aguamarina);
-            border-radius: 2px;
-        }
-
-        /* Header hero con video de fondo */
-        header {
-            height: 100vh;
-            position: relative;
-            color: var(--blanco);
-            display: flex;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 0;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            animation: fadeInDown 1s ease;
-        }
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-        .btn {
-            display: inline-block;
-            background: var(--aguamarina);
-            color: var(--negro);
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            animation: fadeIn 1s ease 0.6s both;
-            box-shadow: 0 5px 15px rgba(127, 255, 212, 0.4);
-        }
-        .btn:hover {
-            background: transparent;
-            color: var(--aguamarina);
-            border-color: var(--aguamarina);
-            transform: translateY(-5px);
-        }
-
-        /* Sección catálogo con efecto parallax */
-        .catalogo {
-            background: url('https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') fixed;
+        /* Estilos existentes... */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hero-bg.jpg');
             background-size: cover;
-            position: relative;
-            color: var(--blanco);
-        }
-        .catalogo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-        }
-        .catalogo .container {
-            position: relative;
-            z-index: 1;
-        }
-        .catalogo h2::after {
-            background: var(--plateado);
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .product-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.5s;
-            border: 1px solid rgba(192, 192, 192, 0.2);
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        .product-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .product-card:hover .product-img img {
-            transform: scale(1.1);
-        }
-        .product-info {
-            padding: 25px;
-        }
-        .product-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--aguamarina);
-        }
-        .price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--plateado);
-            margin: 15px 0;
-        }
-        .product-info .btn {
-            background: transparent;
-            color: var(--aguamarina);
-            border: 2px solid var(--aguamarina);
-            padding: 10px 25px;
-            font-size: 0.9rem;
-            display: inline-block;
-            width: 100%;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
             text-align: center;
         }
-        .product-info .btn:hover {
-            background: var(--aguamarina);
-            color: var(--negro);
+        
+        /* Estilos para el catálogo interactivo */
+        .catalogo-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
         }
-
-        /* Testimonios con cards animadas */
-        .testimonios {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        .testimonial-card {
-            background: var(--blanco);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--sombra);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        .testimonial-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--aguamarina);
-        }
-        .client-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .client-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 20px;
-            border: 3px solid var(--aguamarina);
-        }
-        .client-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .client-name {
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        .client-location {
-            color: var(--gris);
-            font-size: 0.9rem;
-        }
-        .quote {
-            font-style: italic;
-            line-height: 1.8;
-        }
-        .rating {
-            color: var(--aguamarina);
-            margin-top: 15px;
-        }
-
-        /* Contacto con mapa interactivo */
-        .contacto {
-            position: relative;
-        }
-        .contact-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 50px;
-        }
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        .contact-card {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--aguamarina);
-            color: var(--negro);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-        .contact-text h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        .contact-text a {
-            color: var(--gris-oscuro);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .contact-text a:hover {
-            color: var(--aguamarina);
-        }
-       .mapa-container {
-  width: 100%;
-  margin: 40px 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  aspect-ratio: 16/9; /* Relación de aspecto (ajustable) */
-}
-
-.mapa-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
-        /* WhatsApp flotante con animación */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: var(--aguamarina);
-            color: var(--negro);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 5px 20px rgba(127, 255, 212, 0.5);
-            z-index: 100;
-            transition: all 0.3s;
-            animation: pulse 2s infinite;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            animation: none;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--negro);
-            color: var(--plateado);
-            padding: 50px 0 20px;
+        
+        .catalogo-title {
             text-align: center;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            color: #0d6efd;
             margin-bottom: 40px;
-            text-align: left;
+            font-weight: 600;
         }
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
+        
+        .visor-principal {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
             margin-bottom: 20px;
-            color: var(--aguamarina);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #dee2e6;
+            background-color: #fff;
         }
-        .footer-links h3 {
-            color: var(--aguamarina);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+        
+        .visor-principal img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.5s ease;
         }
-        .footer-links ul {
-            list-style: none;
-        }
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        .footer-links a {
-            color: var(--plateado);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: var(--aguamarina);
-        }
-        .social-links {
+        
+        .miniaturas-container {
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
         }
-        .social-links a {
-            width: 40px;
-            height: 40px;
+        
+        .miniatura {
+            min-width: 100px;
+            height: 80px;
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+        
+        .miniatura:hover {
+            transform: scale(1.05);
+            border-color: #0d6efd;
+        }
+        
+        .miniatura.active {
+            border-color: #0d6efd;
+            transform: scale(1.05);
+        }
+        
+        .miniatura img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 18px;
             border-radius: 50%;
-            background: rgba(192, 192, 192, 0.2);
-            color: var(--plateado);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+            z-index: 10;
+            transition: all 0.3s ease;
         }
-        .social-links a:hover {
-            background: var(--aguamarina);
-            color: var(--negro);
-            transform: translateY(-5px);
+        
+        .nav-btn:hover {
+            background-color: rgba(0,0,0,0.8);
         }
-        .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(192, 192, 192, 0.1);
-            font-size: 0.9rem;
+        
+        .prev-btn {
+            left: 15px;
         }
-
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+        .next-btn {
+            right: 15px;
         }
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .producto-info {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(127, 255, 212, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(127, 255, 212, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(127, 255, 212, 0); }
-        }
-
-        /* Responsive */
+        
         @media (max-width: 768px) {
-            header {
-                height: auto;
-                padding: 100px 0;
+            .visor-principal {
+                height: 300px;
             }
-            .hero-content h1 {
-                font-size: 2.5rem;
+            
+            .miniatura {
+                min-width: 70px;
+                height: 60px;
             }
-            section {
-                padding: 70px 0;
-            }
-            h2 {
-                font-size: 2rem;
-            }
-/* Mobile Styles (max-width: 768px) */
-@media (max-width: 768px) {
-  header {
-    padding: 60px 0;
-  }
-  header h1 {
-    font-size: 2rem;
-  }
-  .producto {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  .btn {
-    padding: 12px 20px;
-    font-size: 1rem;
-  }
-  .mapa-container iframe {
-    height: 300px;
-  }
-    @media (max-width: 768px) {
-  .mapa-container {
-    margin: 20px 0;
-    aspect-ratio: 1/1; /* Cuadrado en móviles */
-  }
         }
     </style>
 </head>
 <body>
-    <!-- WhatsApp flotante -->
-    <a href="https://wa.me/584244124945" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Header con video de fondo -->
-    <header>
-        <video autoplay muted loop class="video-bg">
-            <source src="video.webm" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <div class="container">
-                <h1>Fábrica Cessmar</h1>
-                <p>Diseño y fabricación de muebles y camas premium en Mariara, Carabobo. Calidad artesanal con garantía extendida.</p>
-                <a href="#contacto" class="btn">Cotizar ahora</a>
+    <!-- Navbar existente -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">CESSMAR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Catálogo -->
-    <section class="catalogo" id="catalogo">
+    <!-- Hero Section existente -->
+    <section class="hero-section">
         <div class="container">
-            <h2>Nuestros Productos</h2>
-            <div class="product-grid">
-                <!-- Producto 1 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="cama.jpg" alt="Cama Queen Premium">
-                    </div>
-                    <div class="product-info">
-                        <h3>Cama Queen Premium</h3>
-                        <p>Madera de pino tratada con estructura reforzada y acabado anticorrosivo.</p>
-                        <div class="price">$280</div>
-                        <a href="https://wa.me/584244124945?text=Hola,%20quiero%20cotizar%20la%20Cama%20Queen%20Premium" class="btn">Consultar</a>
-                    </div>
-                </div>
+            <h1 class="display-4 fw-bold mb-4">Fábrica de Muebles CESSMAR</h1>
+            <p class="lead mb-5">Diseño y calidad en cada uno de nuestros productos</p>
+            <a href="#catalogo" class="btn btn-primary btn-lg px-4">Ver Catálogo</a>
+        </div>
+    </section>
 
-                <!-- Producto 2 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="sofa.jpg" alt="Modular">
+    <!-- Sección de Catálogo Interactivo -->
+    <section id="catalogo" class="catalogo-section">
+        <div class="container">
+            <h2 class="catalogo-title">Nuestros Productos</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="visor-principal">
+                        <img id="imagen-principal" src="https://via.placeholder.com/800x500?text=Seleccione+un+mueble" alt="Mueble principal">
+                        <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
+                        <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
                     </div>
-                    <div class="product-info">
-                        <h3>Ropero Moderno</h3>
-                        <p>Diseño contemporáneo con 3 puertas y 2 cajones, acabado en nogal.</p>
-                        <div class="price">$220</div>
-                        <a href="https://wa.me/584244124945?text=Hola,%20quiero%20cotizar%20el%20Ropero%20Moderno" class="btn">Consultar</a>
+                    
+                    <div class="miniaturas-container" id="miniaturas">
+                        <!-- Miniaturas se generarán con JavaScript -->
                     </div>
-                </div>
-
-                <!-- Producto 3 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="mesa.jpg" alt="Mesa de Noche">
-                    </div>
-                    <div class="product-info">
-                        <h3>Mesa de Noche</h3>
-                        <p>Diseño minimalista con cajón oculto y superficie resistente a líquidos.</p>
-                        <div class="price">$95</div>
-                        <a href="https://wa.me/584244124945?text=Hola,%20quiero%20cotizar%20la%20Mesa%20de%20Noche" class="btn">Consultar</a>
+                    
+                    <div class="producto-info mt-4">
+                        <h3 id="producto-titulo">Seleccione un mueble</h3>
+                        <p id="producto-descripcion" class="mb-0"></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonios -->
-    <section class="testimonios">
+    <!-- Resto de tus secciones existentes (Nosotros, Contacto, etc.) -->
+    <section id="nosotros" class="py-5 bg-light">
         <div class="container">
-            <h2>Clientes Satisfechos</h2>
-            <div class="testimonial-grid">
-                <!-- Testimonio 1 -->
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="María González">
-                        </div>
-                        <div>
-                            <div class="client-name">María González</div>
-                            <div class="client-location">Valencia, Carabobo</div>
-                        </div>
-                    </div>
-                    <p class="quote">"Compré una cama hace 2 años y sigue como nueva. La atención personalizada y la calidad de los materiales superaron mis expectativas."</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-
-                <!-- Testimonio 2 -->
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Luis Rodríguez">
-                        </div>
-                        <div>
-                            <div class="client-name">Luis Rodríguez</div>
-                            <div class="client-location">Guacara, Carabobo</div>
-                        </div>
-                    </div>
-                    <p class="quote">"Como contratista, he trabajado con muchas fábricas, pero Fábrica Cessmar destaca por su puntualidad en entregas y acabados impecables."</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-
-                <!-- Testimonio 3 -->
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Carlota Pérez">
-                        </div>
-                        <div>
-                            <div class="client-name">Carlota Pérez</div>
-                            <div class="client-location">Mariara, Carabobo</div>
-                        </div>
-                    </div>
-                    <p class="quote">"Encargué un mueble a medida y quedé encantada con el resultado. El equipo entendió perfectamente lo que necesitaba y lo entregaron antes de lo previsto."</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </div>
+            <!-- ... contenido existente ... -->
         </div>
     </section>
 
-    <!-- Contacto -->
-    <section class="contacto" id="contacto">
+    <section id="contacto" class="py-5">
         <div class="container">
-            <h2>Contacto</h2>
-            <div class="contact-flex">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Ubicación</h3>
-                            <p>Mariara, Estado Carabobo, Venezuela</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Teléfono</h3>
-                            <p><a href="tel:+584244124945">+58 424-4124945</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Email</h3>
-                            <p><a href="mailto:ventas@fabricacessmar.com">ventas@fabricacessmar.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Horario</h3>
-                            <p>Lunes a Viernes: 8:00 AM - 5:00 PM</p>
-                            <p>Sábados: 9:00 AM - 2:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-             <div class="mapa-container">
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.267284553644!2d-67.7183889241648!3d10.29688918981433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e803c4d6f34f5a5%3A0x1d1a2292c1b83e6a!2sMariara%2C%20Carabobo%2C%20Venezuela!5e0!3m2!1sen!2sus!4v1689876543210!5m2!1sen!2sus" 
-    allowfullscreen="" 
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
-            </div>
+            <!-- ... contenido existente ... -->
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <div class="footer-logo">Fábrica Cessmar</div>
-                    <p>Especialistas en diseño y fabricación de muebles y camas de alta calidad en Mariara, Carabobo.</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#catalogo">Productos</a></li>
-                        <li><a href="#testimonios">Testimonios</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                        <li><a href="https://wa.me/584244124945">WhatsApp</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Mariara, Carabobo</li>
-                        <li><i class="fas fa-phone-alt"></i> +58 424-4124945</li>
-                        <li><i class="fas fa-envelope"></i> ventas@fabricacessmar.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            <div class="copyright">
-                &copy; 2023 Fábrica Cessmar. Todos los derechos reservados.
-            </div>
+    <!-- Footer existente -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2023 Fábrica de Muebles CESSMAR. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        // Efecto de scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Datos de los muebles (reemplaza con tus productos reales)
+        const muebles = [
+            {
+                url: 'img/mueble1.jpg',
+                titulo: 'Juego de Sala Moderno',
+                descripcion: 'Juego de sala en madera de caoba con tapizado en tela premium. Incluye sofá de 3 plazas, 2 butacas y mesa central.'
+            },
+            {
+                url: 'img/mueble2.jpg',
+                titulo: 'Comedor Clásico',
+                descripcion: 'Mesa de comedor para 6 personas con sillas tapizadas. Madera de roble macizo con acabado envejecido.'
+            },
+            {
+                url: 'img/mueble3.jpg',
+                titulo: 'Dormitorio Juvenil',
+                descripcion: 'Conjunto de dormitorio juvenil incluye cama, escritorio y armario. Diseño moderno en melamina color nogal.'
+            },
+            {
+                url: 'img/mueble4.jpg',
+                titulo: 'Biblioteca Estilo Industrial',
+                descripcion: 'Biblioteca de 5 niveles en metal y madera. Perfecta para salas de estar o estudios.'
+            }
+        ];
+        
+        let muebleActual = 0;
+        
+        function inicializarCatalogo() {
+            const contenedorMiniaturas = document.getElementById('miniaturas');
+            const imagenPrincipal = document.getElementById('imagen-principal');
+            
+            // Crear miniaturas
+            muebles.forEach((mueble, index) => {
+                const miniatura = document.createElement('div');
+                miniatura.className = 'miniatura';
+                if (index === 0) miniatura.classList.add('active');
+                
+                miniatura.innerHTML = `
+                    <img src="${mueble.url}" alt="${mueble.titulo}" data-index="${index}">
+                `;
+                
+                miniatura.addEventListener('click', () => {
+                    cambiarMueble(index);
                 });
+                
+                contenedorMiniaturas.appendChild(miniatura);
             });
-        });
-                // Cambiar video por imagen en móviles
-        function checkScreenSize() {
-            const videoBg = document.querySelector('.video-bg');
-            if (window.innerWidth < 768) {
-                videoBg.style.display = 'none';
-                document.querySelector('header').style.backgroundImage = 'url("https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")';
-            } else {
-                videoBg.style.display = 'block';
-                document.querySelector('header').style.backgroundImage = 'none';
+            
+            // Mostrar el primer mueble
+            if (muebles.length > 0) {
+                imagenPrincipal.src = muebles[0].url;
+                imagenPrincipal.alt = muebles[0].titulo;
+                document.getElementById('producto-titulo').textContent = muebles[0].titulo;
+                document.getElementById('producto-descripcion').textContent = muebles[0].descripcion;
             }
         }
-
-        window.addEventListener('resize', checkScreenSize);
-        checkScreenSize();
+        
+        function cambiarMueble(index) {
+            const imagenPrincipal = document.getElementById('imagen-principal');
+            const miniaturas = document.querySelectorAll('.miniatura');
+            const productoTitulo = document.getElementById('producto-titulo');
+            const productoDescripcion = document.getElementById('producto-descripcion');
+            
+            // Actualizar clase activa
+            miniaturas.forEach(miniatura => miniatura.classList.remove('active'));
+            miniaturas[index].classList.add('active');
+            
+            // Efecto de transición
+            imagenPrincipal.style.opacity = 0;
+            
+            setTimeout(() => {
+                imagenPrincipal.src = muebles[index].url;
+                imagenPrincipal.alt = muebles[index].titulo;
+                productoTitulo.textContent = muebles[index].titulo;
+                productoDescripcion.textContent = muebles[index].descripcion;
+                imagenPrincipal.style.opacity = 1;
+                muebleActual = index;
+                
+                // Desplazar miniaturas
+                miniaturas[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }, 300);
+        }
+        
+        function navegar(direccion) {
+            let nuevoIndex = muebleActual + direccion;
+            
+            if (nuevoIndex < 0) {
+                nuevoIndex = muebles.length - 1;
+            } else if (nuevoIndex >= muebles.length) {
+                nuevoIndex = 0;
+            }
+            
+            cambiarMueble(nuevoIndex);
+        }
+        
+        // Inicializar el catálogo cuando la página cargue
+        window.addEventListener('DOMContentLoaded', inicializarCatalogo);
     </script>
 </body>
 </html>
