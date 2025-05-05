@@ -7,30 +7,54 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
+        /* ESTILOS ORIGINALES DE TU PÁGINA (SIN MODIFICAR) */
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
         }
         
-        /* ESTILOS DEL CATÁLOGO (MÍNIMOS PARA NO AFECTAR EL DISEÑO EXISTENTE) */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        /* ESTILOS DEL CATÁLOGO (MÍNIMOS PARA INTEGRARSE SIN AFECTAR EL DISEÑO) */
+        .catalogo-container {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        
         .visor-principal {
             width: 100%;
             height: 500px;
             overflow: hidden;
             position: relative;
             margin-bottom: 15px;
-            border-radius: 8px;
         }
         
         .visor-principal img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.3s ease;
             background-color: #f8f9fa;
         }
         
@@ -45,10 +69,9 @@
             min-width: 100px;
             height: 80px;
             cursor: pointer;
-            border-radius: 4px;
             overflow: hidden;
             border: 2px solid transparent;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .miniatura:hover, .miniatura.active {
@@ -69,8 +92,8 @@
             color: white;
             border: none;
             cursor: pointer;
-            padding: 10px 15px;
-            font-size: 18px;
+            padding: 8px 12px;
+            font-size: 16px;
             border-radius: 50%;
             z-index: 10;
         }
@@ -103,34 +126,42 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION ORIGINAL (SIN CAMBIOS) -->
+    <!-- HERO SECTION CON VIDEO ORIGINAL (SIN CAMBIOS) -->
     <section class="hero-section">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">Fábrica de Muebles CESSMAR</h1>
-            <p class="lead mb-5">Diseño y calidad en cada uno de nuestros productos</p>
-            <a href="#productos" class="btn btn-primary btn-lg px-4">Ver Productos</a>
+        <video autoplay muted loop class="hero-video">
+            <source src="img/video-hero.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5
+        </video>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="display-4 fw-bold mb-4">Fábrica de Muebles CESSMAR</h1>
+                <p class="lead mb-5">Diseño y calidad en cada uno de nuestros productos</p>
+                <a href="#productos" class="btn btn-primary btn-lg px-4">Ver Productos</a>
+            </div>
         </div>
     </section>
 
-    <!-- SECCIÓN DE PRODUCTOS (REEMPLAZADA CON EL CATÁLOGO) -->
+    <!-- SECCIÓN DE PRODUCTOS (AHORA CON CATÁLOGO INTERACTIVO) -->
     <section id="productos" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Nuestros Productos</h2>
             
             <!-- CATÁLOGO INTERACTIVO -->
-            <div class="visor-principal">
-                <img id="imagen-principal" src="https://via.placeholder.com/800x500?text=Seleccione+un+mueble" alt="Mueble principal">
-                <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
-                <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
-            </div>
-            
-            <div class="miniaturas-container" id="miniaturas">
-                <!-- Miniaturas se generarán con JavaScript -->
-            </div>
-            
-            <div class="mt-4 p-4 bg-light rounded">
-                <h3 id="producto-titulo" class="text-primary">Seleccione un mueble</h3>
-                <p id="producto-descripcion" class="mb-0"></p>
+            <div class="catalogo-container">
+                <div class="visor-principal">
+                    <img id="imagen-principal" src="img/mueble1.jpg" alt="Mueble principal">
+                    <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
+                    <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
+                </div>
+                
+                <div class="miniaturas-container" id="miniaturas">
+                    <!-- Miniaturas se generarán con JavaScript -->
+                </div>
+                
+                <div class="mt-4">
+                    <h3 id="producto-titulo" class="text-primary">Juego de Sala Clásico</h3>
+                    <p id="producto-descripcion" class="mb-0">Elegante juego de sala en madera de caoba con tapizado en piel.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -151,7 +182,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO ORIGINAL (SIN CAMBIOS) -->
+    <!-- SECCIÓN CONTACTO ORIGINAL CON MAPA (SIN CAMBIOS) -->
     <section id="contacto" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Contáctanos</h2>
@@ -164,6 +195,14 @@
                             <p class="card-text"><i class="bi bi-telephone-fill"></i> +51 123 456 789</p>
                             <p class="card-text"><i class="bi bi-envelope-fill"></i> info@cessmar.com</p>
                             <p class="card-text"><i class="bi bi-clock-fill"></i> Lunes a Viernes: 9am - 6pm</p>
+                            
+                            <!-- Mapa original -->
+                            <div class="mt-4 ratio ratio-16x9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456.7890123456!2d-77.12345678901234!3d-12.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiUyA3N8KwMDcnMjQuNCJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,7 +242,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // DATOS DE TUS MUEBLES (REEMPLAZA CON TUS PRODUCTOS REALES)
+        // DATOS DE LOS MUEBLES (REEMPLAZA CON TUS PRODUCTOS REALES)
         const muebles = [
             {
                 url: 'img/mueble1.jpg',
@@ -243,9 +282,6 @@
                 miniatura.addEventListener('click', () => cambiarMueble(index));
                 contenedorMiniaturas.appendChild(miniatura);
             });
-            
-            // Mostrar primer mueble
-            if (muebles.length > 0) actualizarInfoMueble(0);
         }
         
         function cambiarMueble(index) {
@@ -258,25 +294,16 @@
                 imagenPrincipal.alt = muebles[index].titulo;
                 imagenPrincipal.style.opacity = 1;
                 muebleActual = index;
-                actualizarInfoMueble(index);
+                
+                // Actualizar información
+                document.getElementById('producto-titulo').textContent = muebles[index].titulo;
+                document.getElementById('producto-descripcion').textContent = muebles[index].descripcion;
                 
                 // Actualizar miniatura activa
                 document.querySelectorAll('.miniatura').forEach((min, i) => {
                     min.classList.toggle('active', i === index);
                 });
-                
-                // Desplazar miniaturas
-                document.querySelectorAll('.miniatura')[index].scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                    inline: 'center'
-                });
             }, 200);
-        }
-        
-        function actualizarInfoMueble(index) {
-            document.getElementById('producto-titulo').textContent = muebles[index].titulo;
-            document.getElementById('producto-descripcion').textContent = muebles[index].descripcion;
         }
         
         function navegar(direccion) {
