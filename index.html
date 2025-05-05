@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        /* ESTILOS ORIGINALES DE TU PÁGINA (SIN MODIFICAR) */
         .hero-section {
             position: relative;
             height: 100vh;
@@ -36,18 +35,15 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
         
-        /* ESTILOS DEL CATÁLOGO (MÍNIMOS PARA INTEGRARSE SIN AFECTAR EL DISEÑO) */
-        .catalogo-container {
-            margin: 0 auto;
-            max-width: 100%;
-        }
-        
+        /* Estilos del catálogo (nuevos) */
         .visor-principal {
             width: 100%;
             height: 500px;
             overflow: hidden;
             position: relative;
             margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
         }
         
         .visor-principal img {
@@ -55,7 +51,6 @@
             height: 100%;
             object-fit: contain;
             transition: opacity 0.3s ease;
-            background-color: #f8f9fa;
         }
         
         .miniaturas-container {
@@ -69,6 +64,7 @@
             min-width: 100px;
             height: 80px;
             cursor: pointer;
+            border-radius: 4px;
             overflow: hidden;
             border: 2px solid transparent;
             transition: all 0.2s ease;
@@ -108,7 +104,7 @@
     </style>
 </head>
 <body>
-    <!-- NAVBAR ORIGINAL (SIN CAMBIOS) -->
+    <!-- Navbar Original -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">CESSMAR</a>
@@ -126,7 +122,7 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION CON VIDEO ORIGINAL (SIN CAMBIOS) -->
+    <!-- Hero Section con Video (Original) -->
     <section class="hero-section">
         <video autoplay muted loop class="hero-video">
             <source src="img/video-hero.mp4" type="video/mp4">
@@ -141,32 +137,30 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE PRODUCTOS (AHORA CON CATÁLOGO INTERACTIVO) -->
+    <!-- Sección de Productos (Ahora con Catálogo) -->
     <section id="productos" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Nuestros Productos</h2>
             
-            <!-- CATÁLOGO INTERACTIVO -->
-            <div class="catalogo-container">
-                <div class="visor-principal">
-                    <img id="imagen-principal" src="img/mueble1.jpg" alt="Mueble principal">
-                    <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
-                    <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
-                </div>
-                
-                <div class="miniaturas-container" id="miniaturas">
-                    <!-- Miniaturas se generarán con JavaScript -->
-                </div>
-                
-                <div class="mt-4">
-                    <h3 id="producto-titulo" class="text-primary">Juego de Sala Clásico</h3>
-                    <p id="producto-descripcion" class="mb-0">Elegante juego de sala en madera de caoba con tapizado en piel.</p>
-                </div>
+            <!-- Catálogo Interactivo -->
+            <div class="visor-principal">
+                <img id="imagen-principal" src="img/mueble1.jpg" alt="Mueble principal">
+                <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
+                <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
+            </div>
+            
+            <div class="miniaturas-container" id="miniaturas">
+                <!-- Miniaturas se generarán con JavaScript -->
+            </div>
+            
+            <div class="mt-4">
+                <h3 id="producto-titulo" class="text-primary">Juego de Sala Clásico</h3>
+                <p id="producto-descripcion" class="mb-0">Elegante juego de sala en madera de caoba con tapizado en piel.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN NOSOTROS ORIGINAL (SIN CAMBIOS) -->
+    <!-- Sección Nosotros (Original) -->
     <section id="nosotros" class="py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
@@ -182,7 +176,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO ORIGINAL CON MAPA (SIN CAMBIOS) -->
+    <!-- Sección Contacto con Mapa (Original) -->
     <section id="contacto" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Contáctanos</h2>
@@ -196,7 +190,7 @@
                             <p class="card-text"><i class="bi bi-envelope-fill"></i> info@cessmar.com</p>
                             <p class="card-text"><i class="bi bi-clock-fill"></i> Lunes a Viernes: 9am - 6pm</p>
                             
-                            <!-- Mapa original -->
+                            <!-- Mapa Original -->
                             <div class="mt-4 ratio ratio-16x9">
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456.7890123456!2d-77.12345678901234!3d-12.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiUyA3N8KwMDcnMjQuNCJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" 
                                         allowfullscreen="" 
@@ -232,7 +226,7 @@
         </div>
     </section>
 
-    <!-- FOOTER ORIGINAL (SIN CAMBIOS) -->
+    <!-- Footer Original -->
     <footer class="bg-dark text-white py-4">
         <div class="container text-center">
             <p class="mb-0">&copy; 2023 Fábrica de Muebles CESSMAR. Todos los derechos reservados.</p>
@@ -242,27 +236,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // DATOS DE LOS MUEBLES (REEMPLAZA CON TUS PRODUCTOS REALES)
+        // Datos de los muebles (personaliza con tus productos)
         const muebles = [
             {
                 url: 'img/mueble1.jpg',
                 titulo: 'Juego de Sala Clásico',
-                descripcion: 'Elegante juego de sala en madera de caoba con tapizado en piel. Incluye sofá de 3 plazas, 2 butacas y mesa central. Disponible en varios colores.'
+                descripcion: 'Elegante juego de sala en madera de caoba con tapizado en piel. Incluye sofá de 3 plazas, 2 butacas y mesa central.'
             },
             {
                 url: 'img/mueble2.jpg',
                 titulo: 'Comedor Rústico',
-                descripcion: 'Mesa de comedor extensible para 8 personas con sillas tapizadas. Madera de pino tratada con acabado rústico. Ideal para espacios familiares.'
+                descripcion: 'Mesa de comedor extensible para 8 personas con sillas tapizadas. Madera de pino tratada con acabado rústico.'
             },
             {
                 url: 'img/mueble3.jpg',
                 titulo: 'Dormitorio Moderno',
-                descripcion: 'Conjunto completo de dormitorio que incluye cama king size, mesitas de noche y armario empotrado. Diseño contemporáneo en melamina de alta calidad.'
+                descripcion: 'Conjunto completo de dormitorio que incluye cama king size, mesitas de noche y armario empotrado.'
             },
             {
                 url: 'img/mueble4.jpg',
                 titulo: 'Biblioteca Clásica',
-                descripcion: 'Biblioteca de 6 niveles en roble macizo con detalles tallados a mano. Perfecta para salas de estudio o living rooms espaciosos.'
+                descripcion: 'Biblioteca de 6 niveles en roble macizo con detalles tallados a mano. Perfecta para salas de estudio.'
             }
         ];
         
@@ -287,7 +281,6 @@
         function cambiarMueble(index) {
             const imagenPrincipal = document.getElementById('imagen-principal');
             
-            // Transición suave
             imagenPrincipal.style.opacity = 0;
             setTimeout(() => {
                 imagenPrincipal.src = muebles[index].url;
@@ -295,7 +288,7 @@
                 imagenPrincipal.style.opacity = 1;
                 muebleActual = index;
                 
-                // Actualizar información
+                // Actualizar info
                 document.getElementById('producto-titulo').textContent = muebles[index].titulo;
                 document.getElementById('producto-descripcion').textContent = muebles[index].descripcion;
                 
@@ -313,7 +306,7 @@
             cambiarMueble(nuevoIndex);
         }
         
-        // Inicializar al cargar la página
+        // Inicializar al cargar
         window.addEventListener('DOMContentLoaded', inicializarCatalogo);
     </script>
 </body>
