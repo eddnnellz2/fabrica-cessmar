@@ -4,46 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fábrica de Muebles CESSMAR</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
+        :root {
+            --verde-cessmar: #28a745;
+            --verde-oscuro: #218838;
         }
         
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .bg-cessmar {
+            background-color: var(--verde-cessmar) !important;
+        }
+        
+        .btn-cessmar {
+            background-color: var(--verde-cessmar);
+            border-color: var(--verde-oscuro);
             color: white;
-            background-color: rgba(0, 0, 0, 0.5);
         }
         
-        /* Estilos del catálogo (nuevos) */
+        .btn-cessmar:hover {
+            background-color: var(--verde-oscuro);
+            border-color: var(--verde-oscuro);
+            color: white;
+        }
+        
+        /* ESTILOS ORIGINALES DE TU PÁGINA VERDE */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        /* ESTILOS DEL CATÁLOGO (INTEGRACIÓN DISCRETA) */
+        .catalogo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
         .visor-principal {
             width: 100%;
             height: 500px;
             overflow: hidden;
             position: relative;
             margin-bottom: 15px;
-            border-radius: 5px;
-            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
         
         .visor-principal img {
@@ -51,6 +63,7 @@
             height: 100%;
             object-fit: contain;
             transition: opacity 0.3s ease;
+            background-color: #f8f9fa;
         }
         
         .miniaturas-container {
@@ -71,7 +84,7 @@
         }
         
         .miniatura:hover, .miniatura.active {
-            border-color: #0d6efd;
+            border-color: var(--verde-cessmar);
         }
         
         .miniatura img {
@@ -88,8 +101,8 @@
             color: white;
             border: none;
             cursor: pointer;
-            padding: 8px 12px;
-            font-size: 16px;
+            padding: 10px 15px;
+            font-size: 18px;
             border-radius: 50%;
             z-index: 10;
         }
@@ -104,8 +117,8 @@
     </style>
 </head>
 <body>
-    <!-- Navbar Original -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <!-- NAVBAR ORIGINAL CON COLOR VERDE -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-cessmar sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">CESSMAR</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -122,77 +135,73 @@
         </div>
     </nav>
 
-    <!-- Hero Section con Video (Original) -->
+    <!-- HERO SECTION ORIGINAL -->
     <section class="hero-section">
-        <video autoplay muted loop class="hero-video">
-            <source src="img/video-hero.mp4" type="video/mp4">
-            Tu navegador no soporta videos HTML5
-        </video>
-        <div class="hero-content">
-            <div class="container">
-                <h1 class="display-4 fw-bold mb-4">Fábrica de Muebles CESSMAR</h1>
-                <p class="lead mb-5">Diseño y calidad en cada uno de nuestros productos</p>
-                <a href="#productos" class="btn btn-primary btn-lg px-4">Ver Productos</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Productos (Ahora con Catálogo) -->
-    <section id="productos" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Nuestros Productos</h2>
+            <h1 class="display-4 fw-bold mb-4">Fábrica de Muebles CESSMAR</h1>
+            <p class="lead mb-5">Diseño artesanal y calidad premium en cada pieza</p>
+            <a href="#productos" class="btn btn-cessmar btn-lg px-4">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE PRODUCTOS CON CATÁLOGO -->
+    <section id="productos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestra Colección</h2>
             
-            <!-- Catálogo Interactivo -->
-            <div class="visor-principal">
-                <img id="imagen-principal" src="img/mueble1.jpg" alt="Mueble principal">
-                <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
-                <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
-            </div>
-            
-            <div class="miniaturas-container" id="miniaturas">
-                <!-- Miniaturas se generarán con JavaScript -->
-            </div>
-            
-            <div class="mt-4">
-                <h3 id="producto-titulo" class="text-primary">Juego de Sala Clásico</h3>
-                <p id="producto-descripcion" class="mb-0">Elegante juego de sala en madera de caoba con tapizado en piel.</p>
+            <div class="catalogo-container">
+                <div class="visor-principal">
+                    <img id="imagen-principal" src="img/mueble1.jpg" alt="Mueble principal">
+                    <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
+                    <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
+                </div>
+                
+                <div class="miniaturas-container" id="miniaturas">
+                    <!-- Miniaturas se generarán con JavaScript -->
+                </div>
+                
+                <div class="producto-info mt-4 p-4 bg-white rounded">
+                    <h3 id="producto-titulo" class="text-success">Seleccione un mueble</h3>
+                    <p id="producto-descripcion" class="mb-0"></p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Nosotros (Original) -->
-    <section id="nosotros" class="py-5 bg-light">
+    <!-- SECCIÓN NOSOTROS ORIGINAL -->
+    <section id="nosotros" class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h2 class="mb-4">Sobre Nosotros</h2>
-                    <p>Somos una empresa familiar con más de 15 años de experiencia en el diseño y fabricación de muebles de calidad. Nuestros productos son elaborados con materiales 100% naturales y con técnicas artesanales que garantizan durabilidad y estilo.</p>
-                    <p>En CESSMAR combinamos la tradición de la ebanistería con diseños modernos para ofrecer productos únicos que transformarán tus espacios.</p>
+                    <h2 class="mb-4 text-success">Nuestra Historia</h2>
+                    <p class="lead">Más de 20 años creando muebles con alma</p>
+                    <p>CESSMAR nació en 2003 como un pequeño taller familiar. Hoy mantenemos esa esencia artesanal combinada con diseño contemporáneo. Cada pieza lleva nuestro sello de calidad y atención al detalle.</p>
+                    <p>Usamos maderas nobles de reforestación y acabados ecológicos para muebles que duran generaciones.</p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="img/nosotros.jpg" alt="Taller de muebles" class="img-fluid rounded">
+                    <img src="img/taller.jpg" alt="Nuestro taller" class="img-fluid rounded shadow">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Contacto con Mapa (Original) -->
-    <section id="contacto" class="py-5">
+    <!-- SECCIÓN CONTACTO ORIGINAL -->
+    <section id="contacto" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Contáctanos</h2>
+            <h2 class="text-center mb-5 text-success">Visítanos</h2>
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 border-success">
                         <div class="card-body">
-                            <h3 class="card-title text-primary">Información de Contacto</h3>
-                            <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Av. Principal 123, Ciudad</p>
-                            <p class="card-text"><i class="bi bi-telephone-fill"></i> +51 123 456 789</p>
-                            <p class="card-text"><i class="bi bi-envelope-fill"></i> info@cessmar.com</p>
-                            <p class="card-text"><i class="bi bi-clock-fill"></i> Lunes a Viernes: 9am - 6pm</p>
+                            <h3 class="card-title text-success">Taller y Showroom</h3>
+                            <p><i class="bi bi-geo-alt-fill text-success"></i> Calle Artesanos 345, Distrito Maderero</p>
+                            <p><i class="bi bi-clock-fill text-success"></i> Lunes a Sábado: 9:00 - 18:00 hrs</p>
+                            <p><i class="bi bi-whatsapp text-success"></i> +51 987 654 321</p>
                             
                             <!-- Mapa Original -->
-                            <div class="mt-4 ratio ratio-16x9">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456.7890123456!2d-77.12345678901234!3d-12.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiUyA3N8KwMDcnMjQuNCJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" 
+                            <div class="mt-3 ratio ratio-16x9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.678901234567!2d-77.123456!3d-12.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiUyA3N8KwMDcnMjQuNCJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" 
+                                        style="border:0;" 
                                         allowfullscreen="" 
                                         loading="lazy" 
                                         referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -201,9 +210,9 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card border-success">
                         <div class="card-body">
-                            <h3 class="card-title text-primary">Formulario de Contacto</h3>
+                            <h3 class="card-title text-success">Contáctanos</h3>
                             <form>
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
@@ -214,10 +223,10 @@
                                     <input type="email" class="form-control" id="email" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="mensaje" class="form-label">Mensaje</label>
-                                    <textarea class="form-control" id="mensaje" rows="3" required></textarea>
+                                    <label for="mensaje" class="form-label">¿Qué mueble te interesa?</label>
+                                    <textarea class="form-control" id="mensaje" rows="4" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                                <button type="submit" class="btn btn-cessmar">Enviar Consulta</button>
                             </form>
                         </div>
                     </div>
@@ -226,37 +235,59 @@
         </div>
     </section>
 
-    <!-- Footer Original -->
+    <!-- FOOTER ORIGINAL -->
     <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2023 Fábrica de Muebles CESSMAR. Todos los derechos reservados.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-success">CESSMAR</h5>
+                    <p>Fabricantes de muebles con tradición y diseño innovador.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-success">Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#productos" class="text-white">Catálogo</a></li>
+                        <li><a href="#nosotros" class="text-white">Nuestra Historia</a></li>
+                        <li><a href="#contacto" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-success">Redes Sociales</h5>
+                    <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+            <hr class="my-4 bg-success">
+            <p class="mb-0 text-center">&copy; 2023 Fábrica de Muebles CESSMAR. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></script>
     
     <script>
-        // Datos de los muebles (personaliza con tus productos)
+        // DATOS DE LOS MUEBLES (REEMPLAZA CON TUS PRODUCTOS)
         const muebles = [
             {
                 url: 'img/mueble1.jpg',
                 titulo: 'Juego de Sala Clásico',
-                descripcion: 'Elegante juego de sala en madera de caoba con tapizado en piel. Incluye sofá de 3 plazas, 2 butacas y mesa central.'
+                descripcion: 'Elegante juego de sala en madera de caoba con tapizado en piel italiana. Incluye sofá 3 plazas, 2 butacas y mesa ratona. Disponible en varios tonos.'
             },
             {
                 url: 'img/mueble2.jpg',
-                titulo: 'Comedor Rústico',
-                descripcion: 'Mesa de comedor extensible para 8 personas con sillas tapizadas. Madera de pino tratada con acabado rústico.'
+                titulo: 'Comedor Campestre',
+                descripcion: 'Mesa de comedor en pino macizo con patas torneadas y 6 sillas con asiento tejido. Acabado envejecido natural. Ideal para ambientes rústicos.'
             },
             {
                 url: 'img/mueble3.jpg',
-                titulo: 'Dormitorio Moderno',
-                descripcion: 'Conjunto completo de dormitorio que incluye cama king size, mesitas de noche y armario empotrado.'
+                titulo: 'Dormitorio Minimalista',
+                descripcion: 'Conjunto en melamina de alta densidad que incluye cama queen size, 2 mesitas y armario corredizo. Diseño escandinavo en tonos naturales.'
             },
             {
                 url: 'img/mueble4.jpg',
-                titulo: 'Biblioteca Clásica',
-                descripcion: 'Biblioteca de 6 niveles en roble macizo con detalles tallados a mano. Perfecta para salas de estudio.'
+                titulo: 'Biblioteca Artesanal',
+                descripcion: 'Estructura en roble con 5 niveles y detalles tallados a mano. Puertas con vidrio templado. Disponible en medidas personalizadas.'
             }
         ];
         
@@ -276,6 +307,9 @@
                 miniatura.addEventListener('click', () => cambiarMueble(index));
                 contenedorMiniaturas.appendChild(miniatura);
             });
+            
+            // Mostrar primer mueble
+            if (muebles.length > 0) actualizarInfoMueble(0);
         }
         
         function cambiarMueble(index) {
@@ -287,16 +321,18 @@
                 imagenPrincipal.alt = muebles[index].titulo;
                 imagenPrincipal.style.opacity = 1;
                 muebleActual = index;
-                
-                // Actualizar info
-                document.getElementById('producto-titulo').textContent = muebles[index].titulo;
-                document.getElementById('producto-descripcion').textContent = muebles[index].descripcion;
+                actualizarInfoMueble(index);
                 
                 // Actualizar miniatura activa
                 document.querySelectorAll('.miniatura').forEach((min, i) => {
                     min.classList.toggle('active', i === index);
                 });
             }, 200);
+        }
+        
+        function actualizarInfoMueble(index) {
+            document.getElementById('producto-titulo').textContent = muebles[index].titulo;
+            document.getElementById('producto-descripcion').textContent = muebles[index].descripcion;
         }
         
         function navegar(direccion) {
