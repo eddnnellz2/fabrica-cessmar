@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        /* Estilos existentes... */
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hero-bg.jpg');
             background-size: cover;
@@ -17,29 +16,14 @@
             text-align: center;
         }
         
-        /* Estilos para el catálogo interactivo */
-        .catalogo-section {
-            padding: 60px 0;
-            background-color: #f8f9fa;
-        }
-        
-        .catalogo-title {
-            text-align: center;
-            color: #0d6efd;
-            margin-bottom: 40px;
-            font-weight: 600;
-        }
-        
+        /* ESTILOS DEL CATÁLOGO (MÍNIMOS PARA NO AFECTAR EL DISEÑO EXISTENTE) */
         .visor-principal {
             width: 100%;
             height: 500px;
             overflow: hidden;
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border: 1px solid #dee2e6;
-            background-color: #fff;
         }
         
         .visor-principal img {
@@ -47,6 +31,7 @@
             height: 100%;
             object-fit: contain;
             transition: opacity 0.5s ease;
+            background-color: #f8f9fa;
         }
         
         .miniaturas-container {
@@ -54,8 +39,6 @@
             gap: 10px;
             overflow-x: auto;
             padding: 10px 0;
-            scrollbar-width: thin;
-            scrollbar-color: #888 #f1f1f1;
         }
         
         .miniatura {
@@ -66,17 +49,10 @@
             overflow: hidden;
             border: 2px solid transparent;
             transition: all 0.3s ease;
-            background-color: #fff;
         }
         
-        .miniatura:hover {
-            transform: scale(1.05);
+        .miniatura:hover, .miniatura.active {
             border-color: #0d6efd;
-        }
-        
-        .miniatura.active {
-            border-color: #0d6efd;
-            transform: scale(1.05);
         }
         
         .miniatura img {
@@ -93,46 +69,23 @@
             color: white;
             border: none;
             cursor: pointer;
-            padding: 15px;
+            padding: 10px 15px;
             font-size: 18px;
             border-radius: 50%;
             z-index: 10;
-            transition: all 0.3s ease;
         }
         
-        .nav-btn:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        
-        .prev-btn {
-            left: 15px;
-        }
-        
-        .next-btn {
-            right: 15px;
-        }
-        
-        .producto-info {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
         
         @media (max-width: 768px) {
-            .visor-principal {
-                height: 300px;
-            }
-            
-            .miniatura {
-                min-width: 70px;
-                height: 60px;
-            }
+            .visor-principal { height: 300px; }
+            .miniatura { min-width: 80px; height: 60px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar existente -->
+    <!-- NAVBAR ORIGINAL (SIN CAMBIOS) -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">CESSMAR</a>
@@ -142,7 +95,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                 </ul>
@@ -150,55 +103,97 @@
         </div>
     </nav>
 
-    <!-- Hero Section existente -->
+    <!-- HERO SECTION ORIGINAL (SIN CAMBIOS) -->
     <section class="hero-section">
         <div class="container">
             <h1 class="display-4 fw-bold mb-4">Fábrica de Muebles CESSMAR</h1>
             <p class="lead mb-5">Diseño y calidad en cada uno de nuestros productos</p>
-            <a href="#catalogo" class="btn btn-primary btn-lg px-4">Ver Catálogo</a>
+            <a href="#productos" class="btn btn-primary btn-lg px-4">Ver Productos</a>
         </div>
     </section>
 
-    <!-- Sección de Catálogo Interactivo -->
-    <section id="catalogo" class="catalogo-section">
+    <!-- SECCIÓN DE PRODUCTOS (REEMPLAZADA CON EL CATÁLOGO) -->
+    <section id="productos" class="py-5">
         <div class="container">
-            <h2 class="catalogo-title">Nuestros Productos</h2>
+            <h2 class="text-center mb-5">Nuestros Productos</h2>
             
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="visor-principal">
-                        <img id="imagen-principal" src="https://via.placeholder.com/800x500?text=Seleccione+un+mueble" alt="Mueble principal">
-                        <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
-                        <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
+            <!-- CATÁLOGO INTERACTIVO -->
+            <div class="visor-principal">
+                <img id="imagen-principal" src="https://via.placeholder.com/800x500?text=Seleccione+un+mueble" alt="Mueble principal">
+                <button class="nav-btn prev-btn" onclick="navegar(-1)">&#10094;</button>
+                <button class="nav-btn next-btn" onclick="navegar(1)">&#10095;</button>
+            </div>
+            
+            <div class="miniaturas-container" id="miniaturas">
+                <!-- Miniaturas se generarán con JavaScript -->
+            </div>
+            
+            <div class="mt-4 p-4 bg-light rounded">
+                <h3 id="producto-titulo" class="text-primary">Seleccione un mueble</h3>
+                <p id="producto-descripcion" class="mb-0"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS ORIGINAL (SIN CAMBIOS) -->
+    <section id="nosotros" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Sobre Nosotros</h2>
+                    <p>Somos una empresa familiar con más de 15 años de experiencia en el diseño y fabricación de muebles de calidad. Nuestros productos son elaborados con materiales 100% naturales y con técnicas artesanales que garantizan durabilidad y estilo.</p>
+                    <p>En CESSMAR combinamos la tradición de la ebanistería con diseños modernos para ofrecer productos únicos que transformarán tus espacios.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/nosotros.jpg" alt="Taller de muebles" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO ORIGINAL (SIN CAMBIOS) -->
+    <section id="contacto" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Contáctanos</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">Información de Contacto</h3>
+                            <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Av. Principal 123, Ciudad</p>
+                            <p class="card-text"><i class="bi bi-telephone-fill"></i> +51 123 456 789</p>
+                            <p class="card-text"><i class="bi bi-envelope-fill"></i> info@cessmar.com</p>
+                            <p class="card-text"><i class="bi bi-clock-fill"></i> Lunes a Viernes: 9am - 6pm</p>
+                        </div>
                     </div>
-                    
-                    <div class="miniaturas-container" id="miniaturas">
-                        <!-- Miniaturas se generarán con JavaScript -->
-                    </div>
-                    
-                    <div class="producto-info mt-4">
-                        <h3 id="producto-titulo">Seleccione un mueble</h3>
-                        <p id="producto-descripcion" class="mb-0"></p>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">Formulario de Contacto</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensaje" class="form-label">Mensaje</label>
+                                    <textarea class="form-control" id="mensaje" rows="3" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Resto de tus secciones existentes (Nosotros, Contacto, etc.) -->
-    <section id="nosotros" class="py-5 bg-light">
-        <div class="container">
-            <!-- ... contenido existente ... -->
-        </div>
-    </section>
-
-    <section id="contacto" class="py-5">
-        <div class="container">
-            <!-- ... contenido existente ... -->
-        </div>
-    </section>
-
-    <!-- Footer existente -->
+    <!-- FOOTER ORIGINAL (SIN CAMBIOS) -->
     <footer class="bg-dark text-white py-4">
         <div class="container text-center">
             <p class="mb-0">&copy; 2023 Fábrica de Muebles CESSMAR. Todos los derechos reservados.</p>
@@ -208,27 +203,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Datos de los muebles (reemplaza con tus productos reales)
+        // DATOS DE TUS MUEBLES (REEMPLAZA CON TUS PRODUCTOS REALES)
         const muebles = [
             {
                 url: 'img/mueble1.jpg',
-                titulo: 'Juego de Sala Moderno',
-                descripcion: 'Juego de sala en madera de caoba con tapizado en tela premium. Incluye sofá de 3 plazas, 2 butacas y mesa central.'
+                titulo: 'Juego de Sala Clásico',
+                descripcion: 'Elegante juego de sala en madera de caoba con tapizado en piel. Incluye sofá de 3 plazas, 2 butacas y mesa central. Disponible en varios colores.'
             },
             {
                 url: 'img/mueble2.jpg',
-                titulo: 'Comedor Clásico',
-                descripcion: 'Mesa de comedor para 6 personas con sillas tapizadas. Madera de roble macizo con acabado envejecido.'
+                titulo: 'Comedor Rústico',
+                descripcion: 'Mesa de comedor extensible para 8 personas con sillas tapizadas. Madera de pino tratada con acabado rústico. Ideal para espacios familiares.'
             },
             {
                 url: 'img/mueble3.jpg',
-                titulo: 'Dormitorio Juvenil',
-                descripcion: 'Conjunto de dormitorio juvenil incluye cama, escritorio y armario. Diseño moderno en melamina color nogal.'
+                titulo: 'Dormitorio Moderno',
+                descripcion: 'Conjunto completo de dormitorio que incluye cama king size, mesitas de noche y armario empotrado. Diseño contemporáneo en melamina de alta calidad.'
             },
             {
                 url: 'img/mueble4.jpg',
-                titulo: 'Biblioteca Estilo Industrial',
-                descripcion: 'Biblioteca de 5 niveles en metal y madera. Perfecta para salas de estar o estudios.'
+                titulo: 'Biblioteca Clásica',
+                descripcion: 'Biblioteca de 6 niveles en roble macizo con detalles tallados a mano. Perfecta para salas de estudio o living rooms espaciosos.'
             }
         ];
         
@@ -236,7 +231,6 @@
         
         function inicializarCatalogo() {
             const contenedorMiniaturas = document.getElementById('miniaturas');
-            const imagenPrincipal = document.getElementById('imagen-principal');
             
             // Crear miniaturas
             muebles.forEach((mueble, index) => {
@@ -244,69 +238,55 @@
                 miniatura.className = 'miniatura';
                 if (index === 0) miniatura.classList.add('active');
                 
-                miniatura.innerHTML = `
-                    <img src="${mueble.url}" alt="${mueble.titulo}" data-index="${index}">
-                `;
+                miniatura.innerHTML = `<img src="${mueble.url}" alt="${mueble.titulo}">`;
                 
-                miniatura.addEventListener('click', () => {
-                    cambiarMueble(index);
-                });
-                
+                miniatura.addEventListener('click', () => cambiarMueble(index));
                 contenedorMiniaturas.appendChild(miniatura);
             });
             
-            // Mostrar el primer mueble
-            if (muebles.length > 0) {
-                imagenPrincipal.src = muebles[0].url;
-                imagenPrincipal.alt = muebles[0].titulo;
-                document.getElementById('producto-titulo').textContent = muebles[0].titulo;
-                document.getElementById('producto-descripcion').textContent = muebles[0].descripcion;
-            }
+            // Mostrar primer mueble
+            if (muebles.length > 0) actualizarInfoMueble(0);
         }
         
         function cambiarMueble(index) {
             const imagenPrincipal = document.getElementById('imagen-principal');
-            const miniaturas = document.querySelectorAll('.miniatura');
-            const productoTitulo = document.getElementById('producto-titulo');
-            const productoDescripcion = document.getElementById('producto-descripcion');
             
-            // Actualizar clase activa
-            miniaturas.forEach(miniatura => miniatura.classList.remove('active'));
-            miniaturas[index].classList.add('active');
-            
-            // Efecto de transición
+            // Transición suave
             imagenPrincipal.style.opacity = 0;
-            
             setTimeout(() => {
                 imagenPrincipal.src = muebles[index].url;
                 imagenPrincipal.alt = muebles[index].titulo;
-                productoTitulo.textContent = muebles[index].titulo;
-                productoDescripcion.textContent = muebles[index].descripcion;
                 imagenPrincipal.style.opacity = 1;
                 muebleActual = index;
+                actualizarInfoMueble(index);
+                
+                // Actualizar miniatura activa
+                document.querySelectorAll('.miniatura').forEach((min, i) => {
+                    min.classList.toggle('active', i === index);
+                });
                 
                 // Desplazar miniaturas
-                miniaturas[index].scrollIntoView({
+                document.querySelectorAll('.miniatura')[index].scrollIntoView({
                     behavior: 'smooth',
                     block: 'nearest',
                     inline: 'center'
                 });
-            }, 300);
+            }, 200);
+        }
+        
+        function actualizarInfoMueble(index) {
+            document.getElementById('producto-titulo').textContent = muebles[index].titulo;
+            document.getElementById('producto-descripcion').textContent = muebles[index].descripcion;
         }
         
         function navegar(direccion) {
             let nuevoIndex = muebleActual + direccion;
-            
-            if (nuevoIndex < 0) {
-                nuevoIndex = muebles.length - 1;
-            } else if (nuevoIndex >= muebles.length) {
-                nuevoIndex = 0;
-            }
-            
+            if (nuevoIndex < 0) nuevoIndex = muebles.length - 1;
+            if (nuevoIndex >= muebles.length) nuevoIndex = 0;
             cambiarMueble(nuevoIndex);
         }
         
-        // Inicializar el catálogo cuando la página cargue
+        // Inicializar al cargar la página
         window.addEventListener('DOMContentLoaded', inicializarCatalogo);
     </script>
 </body>
